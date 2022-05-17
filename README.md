@@ -11,7 +11,7 @@
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
   - [Authors:](#authors)
-    - [:woman: KanoCode](#-kanocode)
+    - [:man: KanoCode](#-kanocode)
     - [:woman: Taheny BELGUITH](#-taheny-belguith)
     - [:handshake: Contributing](#-contributing)
     - [Show your support](#show-your-support)
