@@ -36,7 +36,7 @@
 - git init
 - git clone [ ](https://github.com/KanoCode/Kano-Tah-Movies.git)
 ## Authors:
-### :man: KanoCode
+### 👨 : KanoCode
 - GitHub: [@KanoCode](https://github.com/KanoCode)
 - Twitter: [@Kanombola_s](https://twitter.com/Kanombola_s)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kanombola-kanombola-a38b061a4/)
