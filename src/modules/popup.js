@@ -24,7 +24,7 @@ export const updateMovieData = async () => {
 
 export const makeComment = (obj) => {
   const commentContainer = document.querySelector('.comment-body');
-  // commentContainer.innerHTML =''
+  // commentContainer.innerHTML = ''
   const date = document.createElement('h3');
   date.innerText = `${obj.creation_date} ${obj.username} : `;
   const description = document.createElement('p');
@@ -33,9 +33,9 @@ export const makeComment = (obj) => {
 };
 
 // consume involvement api
-export const getCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments?item_id=item1';
-export async function updateCommentData(endPointURL) {
-  const getComment = await fetch(endPointURL);
+export const getCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments?item_id=item';
+export async function updateCommentData(endPointURL, id) {
+  const getComment = await fetch(endPointURL + id);
   const response = await getComment.json();
   console.log(response);
   // update popup comment title

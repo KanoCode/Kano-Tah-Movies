@@ -59,12 +59,19 @@ myForm.addEventListener('submit', async (e) => {
       username,
       comment,
     };
+    try {
+      await addCommenturl(postCommentsURL, data);
+    } catch {
+      console.log(console.error());
+    }
 
-    await addCommenturl(postCommentsURL, data);
-    username.value = '';
-    comment.value = '';
+    const [name, commentInpt] = [e.target.childNodes[1], e.target.childNodes[3]];
+    name.value = '';
+    commentInpt.value = '';
+    console.log(id);
+    updateCommentData(getCommentsURL, id);
   }
 });
 
 // consume involvement api
-updateCommentData(getCommentsURL);
+updateCommentData(getCommentsURL, id);
