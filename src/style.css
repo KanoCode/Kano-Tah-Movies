@@ -60,6 +60,7 @@ form {
   justify-content: space-evenly;
   flex-direction: column;
 }
+
 form > input {
   height: 16%;
 }
@@ -67,6 +68,7 @@ form > input {
 textarea {
   height: 50%;
 }
+
 form > button {
   align-self: flex-start;
   padding: 10px 26px;
@@ -79,6 +81,7 @@ form > button {
   flex-direction: column;
   align-items: center;
 }
+
 footer {
   text-align: center;
 }
@@ -90,6 +93,7 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+
 #movieTitle {
   text-align: center;
   padding: 3%;
@@ -105,9 +109,11 @@ footer {
   display: flex;
   flex-flow: wrap;
 }
+
 .brief-info > div > h3 {
   margin: 0 2%;
 }
+
 .brief-info > div > h3:nth-child(2) {
   margin-left: 40%;
 }
@@ -115,6 +121,7 @@ footer {
 .description {
   margin: 2% 2%;
 }
+
 .movie-img {
   margin-top: 4%;
 }
@@ -127,6 +134,6 @@ footer {
   font-size: 36px;
 }
 
-.active{
+.active {
   display: block;
 }

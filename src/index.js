@@ -1,23 +1,22 @@
-import "./style.css";
-import "./modules/dependencies";
+import './style.css';
+import './modules/dependencies.js';
 import {
   updateMovieData,
   updateCommentData,
   getCommentsURL,
-} from "./modules/popup";
+} from './modules/popup.js';
 // get image function must run immediately popup has an active class
 
-
-const activatePopup = document.getElementById("popup-active");
-const popup = document.querySelector(".popup");
+const activatePopup = document.getElementById('popup-active');
+const popup = document.querySelector('.popup');
 
 // button must add active class to popup
-activatePopup.addEventListener("click", async () => {
-  let closeBtn = await updateMovieData();
-  popup.classList.add("active");
+activatePopup.addEventListener('click', async () => {
+  const closeBtn = await updateMovieData();
+  popup.classList.add('active');
 
-  closeBtn.addEventListener("click", () => {
-    popup.classList.toggle("active");
+  closeBtn.addEventListener('click', () => {
+    popup.classList.toggle('active');
   });
 });
 
@@ -26,18 +25,17 @@ activatePopup.addEventListener("click", async () => {
 // create a new app
 // ZDoYhdgdvLY58qjF0mAV this is my temporal app id
 
-const postCommentsURL =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/";
+const postCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/';
 
 async function addCommenturl(postCommentsURL, data) {
   const comment = await fetch(postCommentsURL, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   });
-  let response = comment.json();
+  const response = comment.json();
   console.log(response);
   return response;
 }
@@ -46,16 +44,16 @@ async function addCommenturl(postCommentsURL, data) {
 const id = Math.floor(Math.random() * 10);
 console.log(id);
 
-const myForm = document.querySelector("form");
+const myForm = document.querySelector('form');
 
-myForm.addEventListener("submit", async (e) => {
+myForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const username = document.getElementById("name").value;
-  const comment = document.getElementById("user-comment").value;
+  const username = document.getElementById('name').value;
+  const comment = document.getElementById('user-comment').value;
   const id = Math.floor(Math.random() * 10);
   console.log(id);
 
-  if (username !== "" && comment !== "") {
+  if (username !== '' && comment !== '') {
     const data = {
       item_id: `item${id}`,
       username,
@@ -63,8 +61,8 @@ myForm.addEventListener("submit", async (e) => {
     };
 
     await addCommenturl(postCommentsURL, data);
-    username.value = "";
-    comment.value = "";
+    username.value = '';
+    comment.value = '';
   }
 });
 
