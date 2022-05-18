@@ -1,8 +1,25 @@
 import "./style.css";
 import "./modules/dependencies";
-import {updateMovieData,updateCommentData,getCommentsURL} from './modules/popup'
+import {
+  updateMovieData,
+  updateCommentData,
+  getCommentsURL,
+} from "./modules/popup";
 // get image function must run immediately popup has an active class
-updateMovieData();
+// updateMovieData();
+
+const activatePopup = document.getElementById("popup-active");
+const popup = document.querySelector(".popup");
+
+// button must add active class to popup
+activatePopup.addEventListener("click", async () => {
+  let closeBtn = await updateMovieData();
+  popup.classList.add("active");
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.toggle("active");
+  });
+});
 
 // Involvement api
 
@@ -52,6 +69,4 @@ myForm.addEventListener("submit", async (e) => {
 });
 
 // consume involvement api
-updateCommentData(
-  getCommentsURL
-);
+updateCommentData(getCommentsURL);

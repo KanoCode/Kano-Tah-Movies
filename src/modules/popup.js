@@ -18,6 +18,8 @@ export const updateMovieData = async () => {
   movieTitle.innerHTML = `${result[0].name} `;
   runTime.innerText = ` Runtime : ${result[0].runtime} minutes`;
   rating.innerText = ` Rating : ${result[0].rating.average}`;
+  const closeBtn =  document.querySelector(".movie-img > span")
+  return closeBtn;
 };
 
 export const makeComment = (obj) => {
@@ -28,6 +30,8 @@ export const makeComment = (obj) => {
   const description = document.createElement("p");
   description.innerText = `${obj.comment} `;
   commentContainer.append(date, description);
+
+
 };
 
 // consume involvement api
