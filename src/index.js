@@ -6,7 +6,7 @@ import {
   getCommentsURL,
 } from "./modules/popup";
 // get image function must run immediately popup has an active class
-// updateMovieData();
+
 
 const activatePopup = document.getElementById("popup-active");
 const popup = document.querySelector(".popup");
