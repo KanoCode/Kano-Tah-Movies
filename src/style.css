@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
 *,
 *::after,
@@ -9,7 +9,8 @@
 }
 
 body {
-  font-family: 'Limelight', cursive;
+  font-family: "Limelight", cursive;
+  position: relative;
 }
 
 h1 {
@@ -24,8 +25,103 @@ footer {
   color: #fff;
 }
 
+button {
+  border: none;
+  background-color: gray;
+  padding: 15px 32px;
+  font-size: 16px;
+  margin: 4px 2px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popup {
+  background-color: #f8eeee;
+  height: 100vh;
+  margin: 0 auto;
+  width: 86%;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.add-comment {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  height: 90%;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+form > input {
+  height: 16%;
+}
+
+textarea {
+  height: 50%;
+}
+form > button {
+  align-self: flex-start;
+  padding: 10px 26px;
+}
+
+.comments {
+  display: flex;
+  width: 88%;
+  margin: 2% auto;
+  flex-direction: column;
+  align-items: center;
+}
 footer {
-  position: absolute;
-  bottom: 0;
   text-align: center;
+}
+
+.popup img {
+  width: 88%;
+  display: block;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+#movieTitle {
+  text-align: center;
+  padding: 3%;
+}
+
+.stats {
+  background-color: #f8eeee;
+  width: 88%;
+  margin: 0 auto;
+}
+
+.brief-info > div {
+  display: flex;
+  flex-flow: wrap;
+}
+.brief-info > div > h3 {
+  margin: 0 2%;
+}
+.brief-info > div > h3:nth-child(2) {
+  margin-left: 40%;
+}
+
+.description {
+  margin: 2% 2%;
+}
+.movie-img {
+  margin-top: 4%;
+}
+
+.movie-img > span {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  right: 2%;
+  font-size: 36px;
 }
