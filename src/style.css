@@ -11,6 +11,7 @@
 body {
   font-family: "Limelight", cursive;
   position: relative;
+  color: #fff;
 }
 
 h1 {
@@ -31,31 +32,38 @@ button {
   padding: 15px 32px;
   font-size: 16px;
   margin: 4px 2px;
-  color: #fff;
   cursor: pointer;
 }
 
 .popup {
-  background-color: #f8eeee;
+  background-color: #1b1717;
   height: 100vh;
+  padding: 4%;
+  position: absolute;
   display: none;
+  top: 0;
   margin: 0 auto;
   width: 86%;
   position: relative;
+  box-shadow: rgb(249 249 246 / 20%) 0 2px 8px 0;
   overflow-y: scroll;
 }
 
 .add-comment {
   height: 30%;
-  width: 100%;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.add-comment > h3 {
+  align-self: center;
 }
 
 form {
   height: 90%;
-  width: 50%;
+  min-width: 260px;
+
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -64,11 +72,13 @@ form {
 form > input {
   height: 16%;
 }
-
-.userComment {
-  height: 50%;
+#name {
+  width: 50%;
 }
-
+#user-comment {
+  height: 40%;
+  width: 100%;
+}
 form > button {
   align-self: flex-start;
   padding: 10px 26px;
@@ -76,10 +86,33 @@ form > button {
 
 .comments {
   display: flex;
-  width: 88%;
+  width: 80%;
   margin: 2% auto;
   flex-direction: column;
   align-items: center;
+}
+.comment-body {
+  height: 20vh;
+  font-family: "Poppins", sans-serif;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.comment-body > div {
+  margin: 2%;
+  text-align: center;
+  width: 85%;
+  background-color: #313131;
+  color: #fff;
+  border: #fff solid;
+  text-align: center;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  letter-spacing: 0.0178em;
+  border-radius: 1rem;
+  padding: 0.25rem 0.75rem;
 }
 
 footer {
@@ -87,21 +120,31 @@ footer {
 }
 
 .popup img {
-  width: 88%;
+  width: 90%;
+  height: 400px;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
 }
 
 #movieTitle {
-  text-align: center;
   padding: 3%;
 }
 
+#movieHeader > div {
+  display: inline-flex;
+  justify-content: unset;
+  width: 40%;
+  justify-content: space-evenly;
+}
+#movieHeader > div > span .fa-star {
+  color: greenyellow;
+}
+
 .stats {
-  background-color: #f8eeee;
-  width: 88%;
+  /* background-color: #f8eeee; */
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -121,12 +164,41 @@ footer {
 .description {
   margin: 2% 2%;
 }
+.description > p {
+  font-family: "Poppins", sans-serif;
+}
+.movie-img > div {
+  display: flex;
+  margin: 4% 5%;
+  height: 40px;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.movie-img > div > span {
+  max-width: 55%;
+  background-color: #313131;
+  color: #fff;
+  border: #fff solid;
+  text-align: center;
+  height: 100%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.0178em;
+  align-items: center;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+}
 
 .movie-img {
   margin-top: 4%;
 }
 
-.movie-img > span {
+.movie-img > .closeBtn {
   position: absolute;
   top: 0;
   cursor: pointer;

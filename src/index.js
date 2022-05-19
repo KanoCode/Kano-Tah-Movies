@@ -1,77 +1,82 @@
-import './style.css';
-import './modules/dependencies.js';
+import "./style.css";
+import "./modules/dependencies.js";
 import {
-  updateMovieData,
+  makeComment,
   updateCommentData,
   getCommentsURL,
-} from './modules/popup.js';
-// get image function must run immediately popup has an active class
+  popupDisplay,
+} from "./modules/popup.js";
 
-const activatePopup = document.getElementById('popup-active');
-const popup = document.querySelector('.popup');
+const postCommentsURL =
+  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/";
+const activatePopup = document.querySelector("section > button");
+const popup = document.querySelector(".popup");
+let id = Math.floor(Math.random() * 10);
 
-// button must add active class to popup
-activatePopup.addEventListener('click', async () => {
-  const closeBtn = await updateMovieData();
-  popup.classList.add('active');
+activatePopup.addEventListener("click", async (e) => {
+  popup.classList.add("active");
+  id = e.target.id;
+  const fetchMovies = `https://api.tvmaze.com/shows/${3}`;
+  let fetchShows = await fetch(fetchMovies);
+  let data = await fetchShows.json();
+  const { addCommentDiv, movieImgDiv } = await popupDisplay(data);
 
-  closeBtn.addEventListener('click', () => {
-    popup.classList.toggle('active');
+  const closeBtn = movieImgDiv.childNodes[2];
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.toggle("active");
+    popup.innerHTML = "";
   });
-});
 
-// Involvement api
+  // consume involvement api
+  updateCommentData(getCommentsURL, id);
 
-// create a new app
-// ZDoYhdgdvLY58qjF0mAV this is my temporal app id
+  const myForm = addCommentDiv.childNodes[3];
+  myForm.addEventListener("submit", async (e) => {
+    const username = myForm.childNodes[1].value;
+    const comment = myForm.childNodes[3].value;
 
-const postCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/';
-
-async function addCommenturl(postCommentsURL, data) {
-  const comment = await fetch(postCommentsURL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  const response = comment.json();
-  console.log(response);
-  return response;
-}
-
-// place holder id
-const id = Math.floor(Math.random() * 10);
-console.log(id);
-
-const myForm = document.querySelector('form');
-
-myForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const username = document.getElementById('name').value;
-  const comment = document.getElementById('user-comment').value;
-  const id = Math.floor(Math.random() * 10);
-  console.log(id);
-
-  if (username !== '' && comment !== '') {
-    const data = {
-      item_id: `item${id}`,
-      username,
-      comment,
-    };
-    try {
-      await addCommenturl(postCommentsURL, data);
-    } catch {
-      console.log(console.error());
+    e.preventDefault();
+    if (username !== "" && comment !== "") {
+      const data = {
+        item_id: `item${id}`,
+        username,
+        comment,
+      };
+      fetch(postCommentsURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
     }
+    const [name, commentInpt] = [
+      e.target.childNodes[1],
+      e.target.childNodes[3],
+    ];
+    let comments = e.target.offsetParent.childNodes[2];
+console.log(comments)
+    name.value = "";
+    commentInpt.value = "";
 
-    const [name, commentInpt] = [e.target.childNodes[1], e.target.childNodes[3]];
-    name.value = '';
-    commentInpt.value = '';
-    console.log(id);
     updateCommentData(getCommentsURL, id);
-  }
+  });
 });
 
-// consume involvement api
-updateCommentData(getCommentsURL, id);
+// fetch(
+//   "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/w0pGLDupYGWYTGto2cBr/likes",
+//   {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       item_id: "item16",
+//     }),
+//   }
+// ).then(response => console.log(response.json()))
+
+// console.log(document.querySelector(".comment-body"))
+
+// .then((data) => console.log(data));
