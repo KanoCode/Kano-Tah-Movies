@@ -1,43 +1,39 @@
 // gets popup data and displays
+import { getComments, getCommentsURL } from "./updateComments";
+const PostComments = async (url, data) => {
+  const message = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return message;
+};
 
-export const makeComment = (obj) => {
+
+
+const postCommentsURL =
+  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/";
+const makeComment = (obj) => {
   const commentContainer = document.querySelector(".comment-body");
   const container = document.createElement("div");
   const date = document.createElement("h3");
   date.innerText = `${obj.creation_date} ${obj.username} : `;
   const description = document.createElement("p");
-  description.innerText = `${obj.comment} `;
+  description.innerText = `${obj.comment}`;
   container.append(date, description);
   commentContainer.append(container);
 };
 
-// consume involvement api
-export const getCommentsURL =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments?item_id=item";
-export async function updateCommentData(endPointURL, id) {
-  const getComment = await fetch(endPointURL + id);
-  const response = await getComment.json();
-  // update popup comment title
-  const commentTitle = document.querySelector(".comments > h3");
-  commentTitle.innerText = `Comments (${
-    response.length < 10 ? `0${response.length}` : response.length
-  })`;
-  // update popup comment details
-  response.forEach((obj) => {
-    makeComment(obj);
-  });
-  return response;
-}
-
 export const popupDisplay = async (movieData) => {
   const popup = document.querySelector(".popup");
   popup.innerHTML = "";
+  let numComments = await getComments();
   const addCommentDiv = document.createElement("div");
   addCommentDiv.className = "add-comment";
   const commentsDiv = document.createElement("div");
   commentsDiv.className = "comments";
-  
-  console.log(movieData)
   const movieHeader = document.createElement("div");
   movieHeader.id = "movieHeader";
   movieHeader.innerHTML = ` <h2> ${movieData.name} </h2> 
@@ -74,13 +70,16 @@ export const popupDisplay = async (movieData) => {
   commentsDiv.innerHTML = `
 
 <!-- Receives data from involvement API -->
-<h3>Comments (01)</h3>
+<h3 class="commentsNum">Comments (${numComments.length})</h3>
 <div class="comment-body">
+
 </div>
 
 
 
 `;
+
+
   addCommentDiv.innerHTML = `
 <h3>Add Comment</h3>
 
@@ -93,7 +92,62 @@ export const popupDisplay = async (movieData) => {
           ></textarea>
           <button type="submit">Add Comment</button>
         </form>`;
+
+  const closeBtn = movieImgDiv.childNodes[2];
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.toggle("active");
+    popup.innerHTML = "";
+  });
+
+  const myForm = addCommentDiv.childNodes[3];
+  myForm.addEventListener("submit", async (e) => {
+    const username = myForm.childNodes[1].value;
+    const comment = myForm.childNodes[3].value;
+    let data;
+
+    e.preventDefault();
+    if (username !== "" && comment !== "") {
+      data = {
+        item_id: `item${1}`,
+        username,
+        comment,
+      };
+      fetch(postCommentsURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(() => {
+        const [name, commentInpt] = [
+          e.target.childNodes[1],
+          e.target.childNodes[3],
+        ];
+        let commentH2 = document.querySelector(".commentsNum");
+        fetch(getCommentsURL + "1")
+          .then((resp) => resp.json())
+          .then((data) => {
+            commentH2.innerHTML = `${data.length}`;
+            
+            const commentBody = document.querySelector(".comment-body");
+            commentBody.innerHTML = "";
+            console.log(commentBody)
+            data.forEach((obj) => {
+              makeComment(obj);
+            });
+          });
+        name.value = "";
+        commentInpt.value = "";
+      });
+    }
+  });
+
+  const commentContainer = document.querySelector(".comment-body");
+  console.log(commentContainer)
+
+  
+
   popup.append(movieHeader, movieImgDiv, statsDiv, commentsDiv, addCommentDiv);
-  const popUpObjects = { addCommentDiv, movieImgDiv };
-  return popUpObjects;
+
 };
