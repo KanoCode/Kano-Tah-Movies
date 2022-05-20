@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: 'Limelight', cursive;
+  font-family: "Limelight", cursive;
   background-color: rgb(27, 23, 23);
 }
 
@@ -91,13 +91,25 @@ button {
 }
 
 .popup {
-  background-color: #1b1717;
+  background-color: rgb(27, 23, 23);
   height: 100vh;
   padding: 4%;
+  z-index: 33;
+  top: 0;
+  right: 8%;
+  left: 8%;
+  color: #fff;
+
+  width: 100%;
+  display: block;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  z-index: 1110;
   display: none;
   margin: 0 auto;
   width: 86%;
-  position: relative;
+  position: fixed;
   box-shadow: rgb(249 249 246 / 20%) 0 2px 8px 0;
   overflow-y: scroll;
 }

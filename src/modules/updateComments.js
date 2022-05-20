@@ -1,7 +1,11 @@
-export const getCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments?item_id=item';
+import { api,idApp } from "./likes-api";
 
-const getComments = async () => {
-  const fetchComments = await fetch(`${getCommentsURL}1`);
+export const postUrl = `${api+idApp+'/comments'}`
+
+export const getCommentsURL = `${api+idApp+'/comments?item_id=item'}`
+
+const getComments = async (id) => {
+  const fetchComments = await fetch(`${getCommentsURL}${id}`);
   const resp = await fetchComments.json();
   return resp;
 };
