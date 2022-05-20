@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
 *,
 *::after,
@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: "Limelight", cursive;
+  font-family: 'Limelight', cursive;
   background-color: rgb(27, 23, 23);
 }
 
@@ -81,100 +81,6 @@ footer {
   margin-bottom: 1rem;
 }
 
-button {
-  border: none;
-  background-color: gray;
-  padding: 15px 32px;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.popup {
-  background-color: rgb(27, 23, 23);
-  padding: 4%;
-  top: 0;
-  right: 8%;
-  left: 8%;
-  color: #fff;
-  height: 100%;
-  overflow: auto;
-  z-index: 1110;
-  display: none;
-  margin: 0 auto;
-  width: 86%;
-  position: fixed;
-  box-shadow: rgb(249 249 246 / 20%) 0 2px 8px 0;
-  overflow-y: scroll;
-}
-
-.add-comment {
-  height: 30%;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-}
-
-.add-comment > h3 {
-  align-self: center;
-}
-
-form {
-  height: 90%;
-  min-width: 260px;
-  width: 60%;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-}
-
-form > input {
-  height: 16%;
-}
-
-#name {
-  width: 50%;
-}
-
-#user-comment {
-  height: 40%;
-  width: 100%;
-}
-
-form > button {
-  align-self: flex-start;
-  padding: 10px 26px;
-}
-
-.comments {
-  display: flex;
-  width: 80%;
-  margin: 2% auto;
-  flex-direction: column;
-  align-items: center;
-}
-
-.comment-body {
-  height: 20vh;
-  font-family: "Poppins", sans-serif;
-  overflow-y: scroll;
-  width: 100%;
-}
-
-.comment-body > div {
-  margin: 2%;
-  width: 85%;
-  background-color: #313131;
-  color: #fff;
-  border: #fff solid;
-  text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.0178em;
-  border-radius: 1rem;
-  padding: 0.25rem 0.75rem;
-}
-
 footer {
   bottom: 0;
 }
@@ -195,96 +101,4 @@ footer {
     justify-content: space-between;
     align-items: center;
   }
-}
-
-.popup img {
-  width: 90%;
-  height: 400px;
-  display: block;
-  object-fit: cover;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#movieTitle {
-  padding: 3%;
-}
-
-.brief-info > div {
-  display: flex;
-  flex-flow: wrap;
-}
-
-.movie-img > div {
-  display: flex;
-  margin: 4% 5%;
-  height: 40px;
-  align-items: center;
-  width: 60%;
-  justify-content: space-between;
-}
-
-#movieHeader > div {
-  display: inline-flex;
-  width: 40%;
-  justify-content: space-evenly;
-}
-
-#movieHeader > div > span .fa-star {
-  color: greenyellow;
-}
-
-.stats {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.brief-info > div > h3 {
-  margin: 0 2%;
-}
-
-.brief-info > div > h3:nth-child(2) {
-  margin-left: 40%;
-}
-
-.description {
-  margin: 2% 2%;
-}
-
-.description > p {
-  font-family: "Poppins", sans-serif;
-}
-
-.movie-img > div > span {
-  max-width: 55%;
-  background-color: #313131;
-  color: #fff;
-  border: #fff solid;
-  text-align: center;
-  height: 100%;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  letter-spacing: 0.0178em;
-  align-items: center;
-  border-radius: 1rem;
-  cursor: pointer;
-  display: inline-flex;
-  padding: 0.25rem 0.75rem;
-}
-
-.movie-img {
-  margin-top: 4%;
-}
-
-.movie-img > .closeBtn {
-  position: absolute;
-  top: 0;
-  cursor: pointer;
-  right: 2%;
-  font-size: 36px;
-}
-
-.active {
-  display: block;
 }
