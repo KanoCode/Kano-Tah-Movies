@@ -39,9 +39,7 @@ button {
   background-color: #1b1717;
   height: 100vh;
   padding: 4%;
-  position: absolute;
   display: none;
-  top: 0;
   margin: 0 auto;
   width: 86%;
   position: relative;
@@ -55,6 +53,7 @@ button {
   display: flex;
   flex-direction: column;
 }
+
 .add-comment > h3 {
   align-self: center;
 }
@@ -62,7 +61,6 @@ button {
 form {
   height: 90%;
   min-width: 260px;
-
   width: 60%;
   display: flex;
   justify-content: space-evenly;
@@ -72,13 +70,16 @@ form {
 form > input {
   height: 16%;
 }
+
 #name {
   width: 50%;
 }
+
 #user-comment {
   height: 40%;
   width: 100%;
 }
+
 form > button {
   align-self: flex-start;
   padding: 10px 26px;
@@ -91,6 +92,7 @@ form > button {
   flex-direction: column;
   align-items: center;
 }
+
 .comment-body {
   height: 20vh;
   font-family: "Poppins", sans-serif;
@@ -100,16 +102,13 @@ form > button {
 
 .comment-body > div {
   margin: 2%;
-  text-align: center;
   width: 85%;
   background-color: #313131;
   color: #fff;
   border: #fff solid;
   text-align: center;
-
   font-size: 0.875rem;
   line-height: 1.25rem;
-
   letter-spacing: 0.0178em;
   border-radius: 1rem;
   padding: 0.25rem 0.75rem;
@@ -132,12 +131,26 @@ footer {
   padding: 3%;
 }
 
+.brief-info > div {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.movie-img > div {
+  display: flex;
+  margin: 4% 5%;
+  height: 40px;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+}
+
 #movieHeader > div {
   display: inline-flex;
-  justify-content: unset;
   width: 40%;
   justify-content: space-evenly;
 }
+
 #movieHeader > div > span .fa-star {
   color: greenyellow;
 }
@@ -146,11 +159,6 @@ footer {
   /* background-color: #f8eeee; */
   width: 100%;
   margin: 0 auto;
-}
-
-.brief-info > div {
-  display: flex;
-  flex-flow: wrap;
 }
 
 .brief-info > div > h3 {
@@ -164,16 +172,9 @@ footer {
 .description {
   margin: 2% 2%;
 }
+
 .description > p {
   font-family: "Poppins", sans-serif;
-}
-.movie-img > div {
-  display: flex;
-  margin: 4% 5%;
-  height: 40px;
-  align-items: center;
-  width: 60%;
-  justify-content: space-between;
 }
 
 .movie-img > div > span {

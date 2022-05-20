@@ -1,60 +1,47 @@
 // gets popup data and displays
-import { getComments, getCommentsURL } from "./updateComments";
-const PostComments = async (url, data) => {
-  const message = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  return message;
-};
+import { getComments, getCommentsURL } from './updateComments.js';
 
-
-
-const postCommentsURL =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/";
-const makeComment = (obj) => {
-  const commentContainer = document.querySelector(".comment-body");
-  const container = document.createElement("div");
-  const date = document.createElement("h3");
+const postCommentsURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZDoYhdgdvLY58qjF0mAV/comments/';
+export const makeComment = (obj) => {
+  const commentContainer = document.querySelector('.comment-body');
+  const container = document.createElement('div');
+  const date = document.createElement('h3');
   date.innerText = `${obj.creation_date} ${obj.username} : `;
-  const description = document.createElement("p");
+  const description = document.createElement('p');
   description.innerText = `${obj.comment}`;
   container.append(date, description);
   commentContainer.append(container);
 };
 
 export const popupDisplay = async (movieData) => {
-  const popup = document.querySelector(".popup");
-  popup.innerHTML = "";
-  let numComments = await getComments();
-  const addCommentDiv = document.createElement("div");
-  addCommentDiv.className = "add-comment";
-  const commentsDiv = document.createElement("div");
-  commentsDiv.className = "comments";
-  const movieHeader = document.createElement("div");
-  movieHeader.id = "movieHeader";
+  const popup = document.querySelector('.popup');
+  popup.innerHTML = '';
+  const numComments = await getComments();
+  const addCommentDiv = document.createElement('div');
+  addCommentDiv.className = 'add-comment';
+  const commentsDiv = document.createElement('div');
+  commentsDiv.className = 'comments';
+  const movieHeader = document.createElement('div');
+  movieHeader.id = 'movieHeader';
   movieHeader.innerHTML = ` <h2> ${movieData.name} </h2> 
   <div>
   <span>${movieData.ended.slice(0, 4)}</span><span>.</span><span>${
-    movieData.status
-  }</span><span>.</span><span> Rating <i class="fa-solid fa-star"></i></span><span>${
-    movieData.rating.average
-  }</span><span>/10</span>
+  movieData.status
+}</span><span>.</span><span> Rating <i class="fa-solid fa-star"></i></span><span>${
+  movieData.rating.average
+}</span><span>/10</span>
 </div>
 
 
   `;
 
-  const statsDiv = document.createElement("div");
-  const movieImgDiv = document.createElement("div");
-  movieImgDiv.className = "movie-img";
+  const statsDiv = document.createElement('div');
+  const movieImgDiv = document.createElement('div');
+  movieImgDiv.className = 'movie-img';
   movieImgDiv.innerHTML = `<img src="${movieData.image.original}" /> <span class="closeBtn "> <i class="fa-solid fa-xmark"></i></span> 
   <div> <span>${movieData.genres[0]}</span><span>${movieData.genres[1]}</span><span>${movieData.genres[2]}</span></div> `;
 
-  statsDiv.className = "stats";
+  statsDiv.className = 'stats';
   statsDiv.innerHTML = `<div class="stats">
   <div class="brief-info">
   <div>
@@ -79,7 +66,6 @@ export const popupDisplay = async (movieData) => {
 
 `;
 
-
   addCommentDiv.innerHTML = `
 <h3>Add Comment</h3>
 
@@ -95,28 +81,28 @@ export const popupDisplay = async (movieData) => {
 
   const closeBtn = movieImgDiv.childNodes[2];
 
-  closeBtn.addEventListener("click", () => {
-    popup.classList.toggle("active");
-    popup.innerHTML = "";
+  closeBtn.addEventListener('click', () => {
+    popup.classList.toggle('active');
+    popup.innerHTML = '';
   });
 
   const myForm = addCommentDiv.childNodes[3];
-  myForm.addEventListener("submit", async (e) => {
+  myForm.addEventListener('submit', async (e) => {
     const username = myForm.childNodes[1].value;
     const comment = myForm.childNodes[3].value;
     let data;
 
     e.preventDefault();
-    if (username !== "" && comment !== "") {
+    if (username !== '' && comment !== '') {
       data = {
         item_id: `item${1}`,
         username,
         comment,
       };
       fetch(postCommentsURL, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       }).then(() => {
@@ -124,30 +110,23 @@ export const popupDisplay = async (movieData) => {
           e.target.childNodes[1],
           e.target.childNodes[3],
         ];
-        let commentH2 = document.querySelector(".commentsNum");
-        fetch(getCommentsURL + "1")
+        const commentH2 = document.querySelector('.commentsNum');
+        fetch(`${getCommentsURL}1`)
           .then((resp) => resp.json())
           .then((data) => {
             commentH2.innerHTML = `${data.length}`;
-            
-            const commentBody = document.querySelector(".comment-body");
-            commentBody.innerHTML = "";
-            console.log(commentBody)
+
+            const commentBody = document.querySelector('.comment-body');
+            commentBody.innerHTML = '';
             data.forEach((obj) => {
               makeComment(obj);
             });
           });
-        name.value = "";
-        commentInpt.value = "";
+        name.value = '';
+        commentInpt.value = '';
       });
     }
   });
 
-  const commentContainer = document.querySelector(".comment-body");
-  console.log(commentContainer)
-
-  
-
   popup.append(movieHeader, movieImgDiv, statsDiv, commentsDiv, addCommentDiv);
-
 };
