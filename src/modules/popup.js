@@ -57,7 +57,7 @@ export const popupDisplay = async (movieData) => {
   commentsDiv.innerHTML = `
 
 <!-- Receives data from involvement API -->
-<h3 class="commentsNum">Comments (${numComments.length})</h3>
+<h3 class="commentsNum">Comments (${numComments.length < 10 ? `0${numComments.length}` : numComments.length})</h3>
 <div class="comment-body">
 
 </div>
@@ -114,8 +114,7 @@ export const popupDisplay = async (movieData) => {
         fetch(`${getCommentsURL}1`)
           .then((resp) => resp.json())
           .then((data) => {
-            commentH2.innerHTML = `${data.length}`;
-
+            commentH2.innerHTML = `Comments (${data.length < 10 ? `0${data.length}` : data.length})`;
             const commentBody = document.querySelector('.comment-body');
             commentBody.innerHTML = '';
             data.forEach((obj) => {
