@@ -1,5 +1,3 @@
-// import { getComments } from "./updateComments";
-
 const commentsCount = (commentsData) => {
   const item = commentsData.length;
   let count = 0;
