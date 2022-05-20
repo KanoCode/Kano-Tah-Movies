@@ -18,4 +18,8 @@ activatePopup.addEventListener('click', async (e) => {
   commentsArr.forEach((comment) => {
     makeComment(comment);
   });
+import getData from './modules/fetch-api.js';
+
+window.addEventListener('load', () => {
+  getData();
 });
