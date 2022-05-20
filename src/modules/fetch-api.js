@@ -33,7 +33,7 @@ async function getData() {
           <div>
             <i id="${data[i].id}" class="likes fa-solid fa-heart"><span id="${i}">${count}</span></i>
           </div>
-          <div class="comments">
+          <div id="${data[i].id}"  class="comments">
             <i class="fa-solid fa-comment"></i>
           </div>
         </div>
