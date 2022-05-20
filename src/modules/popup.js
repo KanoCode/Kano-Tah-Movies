@@ -108,7 +108,7 @@ export const popupDisplay = async (movieData, id) => {
         item_id: `item${id}`,
         username,
         comment,
-      };
+      }; 
       fetch(postUrl, {
         method: 'POST',
         headers: {
@@ -142,7 +142,7 @@ export const popupDisplay = async (movieData, id) => {
   });
 
 
-  
+
 
   popup.append(movieHeader, movieImgDiv, statsDiv, commentsDiv, addCommentDiv);
 };
