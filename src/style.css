@@ -92,18 +92,12 @@ button {
 
 .popup {
   background-color: rgb(27, 23, 23);
-  height: 100vh;
   padding: 4%;
-  z-index: 33;
   top: 0;
   right: 8%;
   left: 8%;
   color: #fff;
-
-  width: 100%;
-  display: block;
   height: 100%;
-  position: fixed;
   overflow: auto;
   z-index: 1110;
   display: none;

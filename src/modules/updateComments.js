@@ -1,8 +1,8 @@
-import { api,idApp } from "./likes-api";
+import { api, idApp } from './likes-api';
 
-export const postUrl = `${api+idApp+'/comments'}`
+export const postUrl = `${`${api + idApp}/comments`}`;
 
-export const getCommentsURL = `${api+idApp+'/comments?item_id=item'}`
+export const getCommentsURL = `${`${api + idApp}/comments?item_id=item`}`;
 
 const getComments = async (id) => {
   const fetchComments = await fetch(`${getCommentsURL}${id}`);
