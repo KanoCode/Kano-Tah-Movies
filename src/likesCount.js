@@ -8,5 +8,4 @@ const likeCount = (id, likesData) => {
   }
   return count;
 };
-
 export default likeCount;

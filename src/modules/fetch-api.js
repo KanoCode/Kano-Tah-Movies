@@ -1,10 +1,10 @@
-import { getLikes, PostLikes } from './likes-api.js';
+import { getLikes, PostLikes } from "./likes-api.js";
 
-import likeCount from '../likesCount.js';
+import likeCount from "../likesCount.js";
 
-const api = 'https://api.tvmaze.com/shows';
-export const container = document.querySelector('.row-container');
-const counter = document.querySelector('#counter');
+const api = "https://api.tvmaze.com/shows";
+export const container = document.querySelector(".row-container");
+const counter = document.querySelector("#counter");
 
 const getItems = async () => {
   const response = await fetch(api);
