@@ -49,8 +49,11 @@
 )
 
 ## Project Presentation
- [Live Demo](https://kanocode.github.io/Kano-Tah-Movies/dist/
-)
+
+
+https://user-images.githubusercontent.com/57154534/169644580-75774ab2-4a55-4536-af72-5293e7017248.mp4
+
+
 
 ## Getting Started
 > To get a local copy up and running follow these simple example steps.
