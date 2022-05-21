@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
-export const idApp = 'XO9kralet7R8kFJiCTyG';
-export const api = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+const idApp = 'XO9kralet7R8kFJiCTyG';
+const api = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
 export const container = document.querySelector('.row-container');
 
 const PostLikes = async (item_id) => {
