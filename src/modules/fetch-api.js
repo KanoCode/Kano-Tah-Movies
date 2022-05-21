@@ -20,7 +20,7 @@ async function getData() {
   const response = await fetch(api);
   const data = await response.json();
   const likesData = await getLikes();
-  for (let i = 0; i < 20; i += 1) {
+  for (let i = 0; i < data.length; i += 1) {
     const count = likeCount(data[i].id.toString(), likesData);
     container.innerHTML += ` <div class="movie-container d-flex">
         <div class="image-container ">
