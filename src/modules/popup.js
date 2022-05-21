@@ -24,7 +24,6 @@ export const popupDisplay = async (movieData, id) => {
   commentsDiv.className = 'comments';
   const movieHeader = document.createElement('div');
   movieHeader.id = 'movieHeader';
-  console.log(movieData.ended);
   movieHeader.innerHTML = ` <h2> ${movieData.name} </h2> 
   
   <div>
@@ -108,7 +107,7 @@ export const popupDisplay = async (movieData, id) => {
         item_id: `item${id}`,
         username,
         comment,
-      }; 
+      };
       fetch(postUrl, {
         method: 'POST',
         headers: {
@@ -140,9 +139,6 @@ export const popupDisplay = async (movieData, id) => {
       });
     }
   });
-
-
-
 
   popup.append(movieHeader, movieImgDiv, statsDiv, commentsDiv, addCommentDiv);
 };

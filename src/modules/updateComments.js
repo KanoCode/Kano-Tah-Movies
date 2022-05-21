@@ -1,4 +1,4 @@
-import { api, idApp } from './likes-api';
+import { api, idApp } from './likes-api.js';
 
 export const postUrl = `${`${api + idApp}/comments`}`;
 
