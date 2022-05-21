@@ -44,7 +44,7 @@
 - Webpack
 - Jest
 - APIs: TVmaze API and Involvement API
-## Live demo( IF AVAILABLE :blush: )
+## Live demo
  [Live Demo](https://kanocode.github.io/Kano-Tah-Movies/dist/
 )
 
